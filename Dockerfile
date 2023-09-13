@@ -10,7 +10,9 @@ ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
 COPY Pipfile Pipfile.lock /code/
-RUN pip install pipenv && pipenv install --system && apt update && apt --force-yes -y install postgresql libpq-dev postgresql-contrib python3-dev
+RUN apt update && apt --force-yes -y install postgresql libpq-dev postgresql-contrib python3-dev
+
+RUN pip install pipenv && pipenv install --system
 RUN pipenv install psycopg2-binary
 # Copy project
 COPY . /code/

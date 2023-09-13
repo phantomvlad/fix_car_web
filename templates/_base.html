@@ -5,6 +5,14 @@
 		<title>{% block title %}FixAuto{% endblock title %}</title>
 	</head>
 	<body>
+	    {% if user.is_authenticated %}
+			{{ user.email }}
+			<a href="{% url 'account_logout' %}">SIGN OUT</a>
+		{% else %}
+			<a href="{% url 'account_login' %}">SIGN IN</a>
+			OR
+			<a href="{% url 'account_signup' %}">SIGN UP</a>
+		{% endif %}
 	    {% block content %}
 	    {% endblock content %}
 	</body>
