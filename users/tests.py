@@ -7,7 +7,7 @@ class CustomUserTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
 
-        user= User.objects.create_user(username='Vlad', email='mmvlad99@mail.ru', password='123qwe')
+        user = User.objects.create_user(username='Vlad', email='mmvlad99@mail.ru', password='123qwe')
         self.assertEqual(user.email, 'mmvlad99@mail.ru')
         self.assertNotEqual(user.email, 'mmvlad99@nail.ru')
         self.assertEqual(user.username, 'Vlad')
