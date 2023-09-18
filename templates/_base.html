@@ -11,20 +11,19 @@
 	</head>
 	<body>
 	    {% if user.is_authenticated %}
-			<p>Добро пожаловать, </p>
 			<a href="{% url 'account_index' user.pk %}">{{ user.username }}</a>
-			<a href="{% url 'account_logout' %}">SIGN OUT</a>
+			<a href="{% url 'account_logout' %}">Выйти</a>
 		{% else %}
-			<a href="{% url 'account_login' %}">SIGN IN</a>
-			OR
-			<a href="{% url 'account_signup' %}">SIGN UP</a>
+			<a href="{% url 'account_login' %}">Войти</a>
+			или
+			<a href="{% url 'account_signup' %}">Регистрация</a>
 		{% endif %}
         {% load simple_menu %}
 {% generate_menu %}
 		{% for item in menus.menu %}
-			<a href="{{ item.url }}">about</a>
+			<a href="{{ item.url }}">О нас</a>
 		{% endfor %}
 	    {% block content %}
 	    {% endblock content %}
 	</body>
-	</html>
+</html>
