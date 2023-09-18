@@ -1,3 +1,8 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <DOCTYPE  html>
 	<html>
 	<head>
@@ -6,15 +11,19 @@
 	</head>
 	<body>
 	    {% if user.is_authenticated %}
-			{{ user.email }}
-
-			{{ user.cars }}
+			<p>Добро пожаловать, </p>
+			<a href="{% url 'account_index' user.pk %}">{{ user.username }}</a>
 			<a href="{% url 'account_logout' %}">SIGN OUT</a>
 		{% else %}
 			<a href="{% url 'account_login' %}">SIGN IN</a>
 			OR
 			<a href="{% url 'account_signup' %}">SIGN UP</a>
 		{% endif %}
+        {% load simple_menu %}
+{% generate_menu %}
+		{% for item in menus.menu %}
+			<a href="{{ item.url }}">about</a>
+		{% endfor %}
 	    {% block content %}
 	    {% endblock content %}
 	</body>
