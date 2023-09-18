@@ -3,4 +3,8 @@
 
 {% block content %}
 	<h1>Это Ваш личный кабинет, {{ account.username }}</h1>
+	<h2>Ваши автомобили:</h2>
+	{% for car in cars %}
+		{{  car }}
+	{% endfor %}
 {% endblock content %}
