@@ -15,6 +15,7 @@ COPY Pipfile Pipfile.lock /code/
 RUN pip install pipenv
 RUN pipenv install psycopg2-binary
 RUN pipenv install Pillow
+RUN pipenv install crispy-bootstrap5 && pipenv install django-crispy-forms
 RUN pipenv install --system
 
 # Copy project

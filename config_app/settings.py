@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'simple_menu',
     'django_bootstrap5',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -143,3 +145,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
 ACCOUNT_SESSION_REMEMBER = True
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
