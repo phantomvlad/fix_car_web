@@ -10,6 +10,7 @@ python-dotenv = "*"
 django-allauth = "*"
 django-simple-menu = "*"
 django-bootstrap5 = "*"
+pillow = "*"
 
 [dev-packages]
 

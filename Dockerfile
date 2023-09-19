@@ -12,7 +12,10 @@ ENV PYTHONUNBUFFERED 1
 RUN apt update
 RUN apt --force-yes -y install postgresql libpq-dev postgresql-contrib python3-dev
 COPY Pipfile Pipfile.lock /code/
-RUN pip install pipenv && pipenv install psycopg2-binary && pipenv install --system
+RUN pip install pipenv
+RUN pipenv install psycopg2-binary
+RUN pipenv install Pillow
+RUN pipenv install --system
 
 # Copy project
 COPY . /code/
