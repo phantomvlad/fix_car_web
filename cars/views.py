@@ -1,8 +1,7 @@
 
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, CreateView
-from django.http import request
-
+from .forms import CarForm
 from .models import Car
 
 class CarPageView(DetailView):
@@ -18,6 +17,5 @@ class CarPageView(DetailView):
 
 
 class CarPageNew(CreateView):
-    model = Car
-    fields = "__all__"
+    form_class = CarForm
     template_name = "cars/new.html"
