@@ -19,3 +19,9 @@ class CarPageView(DetailView):
 class CarPageNew(CreateView):
     form_class = CarForm
     template_name = "cars/new.html"
+
+    def form_valid(self, form):
+        fields = form.save(commit=False)
+        fields.owner = self.request.user
+        fields.save()
+        return super().form_valid(form)
