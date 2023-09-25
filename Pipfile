@@ -11,6 +11,8 @@ django-allauth = "*"
 django-simple-menu = "*"
 django-bootstrap5 = "*"
 pillow = "*"
+django-phonenumber-field = "*"
+phonenumbers = "*"
 
 [dev-packages]
 

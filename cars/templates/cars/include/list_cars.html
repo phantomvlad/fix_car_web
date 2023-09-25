@@ -1,3 +1,3 @@
 {% for car in cars %}
-	{{ car }}
+	<a href='{{ car.get_absolute_url }}'>{{ car }}</a>
 {% endfor %}
