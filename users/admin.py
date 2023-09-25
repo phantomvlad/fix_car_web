@@ -12,6 +12,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
+    prepopulated_fields = {"slug": ('username', )}
 
     inlines = [
         CarInline
