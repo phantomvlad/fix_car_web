@@ -16,6 +16,6 @@ class CustomUserAdmin(UserAdmin):
     inlines = [
         CarInline
     ]
-    list_display = ["email", 'username', 'phone']
+    list_display = ["email", 'username', 'phone', 'time_create', 'time_update']
 
 admin.site.register(CustomUser, CustomUserAdmin)

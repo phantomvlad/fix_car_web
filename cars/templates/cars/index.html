@@ -1,0 +1,6 @@
+{% load car_tags %}
+{% extends '_base.html' %}
+{%  block content %}
+    <h1>Ваши автомобили</h1>
+	{%  get_cars_user(user) as car %}
+{% endblock %}
