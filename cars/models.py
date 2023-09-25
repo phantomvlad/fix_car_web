@@ -36,7 +36,7 @@ class Car(models.Model):
     vincode = models.CharField(verbose_name='Винкод', null=True, blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    owner = models.ForeignKey(get_user_model(), on_delete = models.SET_NULL, related_name='cars', null=True, blank=True, verbose_name='Владелец')
+    owner = models.ForeignKey(get_user_model(), on_delete = models.SET_NULL, related_name='cars', null=True, blank=True, verbose_name='Владелец', db_index=True)
 
     class Meta:
         constraints = [

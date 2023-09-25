@@ -1,10 +1,8 @@
 {% extends '_base.html' %}
 {% block title %}Личный кабинет{% endblock title %}
-
+{% load cars_tags %}
 {% block content %}
 	<h1>Это Ваш личный кабинет, {{ account.username }}</h1>
 	<h2>Ваши автомобили:</h2>
-	{% for car in cars %}
-		<a href="{% url 'car_show' car.pk %}">{{ car }}</a>
-	{% endfor %}
+    {% get_cars_user user %}
 {% endblock content %}
