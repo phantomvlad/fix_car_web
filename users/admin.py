@@ -12,11 +12,11 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    prepopulated_fields = {"slug": ('username', )}
+    prepopulated_fields = {"slug_username": ('username', )}
 
     inlines = [
         CarInline
     ]
-    list_display = ["email", 'username', 'phone', 'time_create', 'time_update']
+    list_display = ["email", 'username', 'phone', 'time_create', 'time_update', 'slug_username']
 
 admin.site.register(CustomUser, CustomUserAdmin)
