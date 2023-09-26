@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from cars.admin import CarInline
+from repair.admin import RepairInline
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 # Register your models here.
@@ -15,7 +16,8 @@ class CustomUserAdmin(UserAdmin):
     prepopulated_fields = {"slug_username": ('username', )}
 
     inlines = [
-        CarInline
+        CarInline,
+        RepairInline
     ]
     list_display = ["email", 'username', 'phone', 'time_create', 'time_update', 'slug_username']
 
