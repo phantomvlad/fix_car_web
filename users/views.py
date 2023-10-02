@@ -8,8 +8,8 @@ class UserPageView(DetailView):
 
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
-        slug_username = self.kwargs.get('slug_username')
-        account = get_object_or_404(CustomUser, slug_username=slug_username)
+        slug = self.kwargs.get('slug')
+        account = get_object_or_404(CustomUser, slug=slug)
         cars = account.cars.all()
         context['account'] = account
         context['cars'] = cars
