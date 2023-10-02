@@ -11,5 +11,5 @@ def get_cars_user(user, sort = None):
     if not sort:
         cars = Car.objects.filter(owner=user).order_by('-time_update')
     else:
-        cars = Car.objects.filte(owner=user).order_by(sort)
-    return {'cars': cars }
+        cars = Car.objects.filter(owner=user).order_by(sort)
+    return {'cars': cars}

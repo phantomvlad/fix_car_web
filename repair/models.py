@@ -30,12 +30,13 @@ class Repair(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(get_user_model(), on_delete = models.SET_NULL, related_name='repairs', null=True, blank=True, verbose_name='Владелец', db_index=True)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='repairs',verbose_name='Автомобиль')
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='repairs', verbose_name='Автомобиль')
 
     def __str__(self):
         return f"{self.title}"
+
     def get_absolute_url(self):
-        return reverse('repair_show', kwargs={'pk': self.pk})
+        return reverse('repair_show', kwargs={'pk_car': self.car.pk, 'pk_repair': self.pk})
 
     def save(self, *args, **kwargs):
         if not self.title:
