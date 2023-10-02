@@ -5,4 +5,5 @@
 	<h1>Это Ваш личный кабинет, {{ account.username }}</h1>
 	<h2>Ваши автомобили:</h2>
     {% get_cars_user user %}
+    <a class="btn btn-outline-primary" href="{% url 'car_create' %}">+ Новый автомобиль</a>
 {% endblock content %}
