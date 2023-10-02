@@ -28,7 +28,7 @@ class Car(models.Model):
     generation = models.PositiveSmallIntegerField(verbose_name='Год выпуска')
     transmission = models.CharField(verbose_name='Тип коробки передач', null=True, blank=True, choices=TRANSMISSION_CHOICES, max_length=4)
     engine = models.CharField(verbose_name='Тип двигателя', null=True, blank=True, choices=ENGINE_CHOICES, max_length=4)
-    air = models.CharField(verbose_name='Подача воздуха', null=True, blank=True, choices=AIR_CHOICES, max_length=4)
+    air = models.CharField(verbose_name='Тип двигателя по подаче воздуха', null=True, blank=True, choices=AIR_CHOICES, max_length=4)
     gaz = models.BooleanField(verbose_name='Газовое оборудование', null=True, blank=True, default=False)
     wheel_drive = models.CharField(verbose_name='Привод', null=True, blank=True, choices=WHEEL_CHOICES, max_length=5)
     capacity = models.PositiveSmallIntegerField(verbose_name='Мощность двигателя', null=True, blank=True)
