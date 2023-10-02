@@ -7,13 +7,9 @@ class CarPageView(DetailView):
     model = Car
     template_name = "cars/show.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_object(self, queryset=None):
         pk = self.kwargs.get('pk')
-        car = get_object_or_404(Car, pk=pk)
-        context['car'] = car
-        return context
-
+        return get_object_or_404(Car, pk=pk)
 
 class CarPageNew(CreateView):
     form_class = CarForm
