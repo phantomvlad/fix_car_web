@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
         fields=('email', 'username', 'phone',)
 
 class CustomUserChangeForm(UserChangeForm):
-    slug_username = forms.CharField(max_length=150)
+    slug = forms.CharField(max_length=150)
     class Meta(UserChangeForm):
         model = get_user_model()
         fields = ('email', 'username', 'phone',)
