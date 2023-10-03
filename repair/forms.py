@@ -4,5 +4,5 @@ from .models import Repair
 class RepairForm(ModelForm):
     class Meta:
         model = Repair
-        exclude = ['title']
+        exclude = ['title', 'car', 'owner']
 

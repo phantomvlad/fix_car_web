@@ -27,5 +27,7 @@ class RepairPageNew(CreateView):
     def form_valid(self, form):
         fields = form.save(commit=False)
         fields.owner = self.request.user
+        pk_car = self.kwargs.get('pk_car')
+        fields.car = get_object_or_404(Car, pk=pk_car)
         fields.save()
         return super().form_valid(form)
