@@ -13,11 +13,9 @@ RUN apt update
 RUN apt --force-yes -y install postgresql libpq-dev postgresql-contrib python3-dev
 COPY Pipfile Pipfile.lock /code/
 RUN pip install pipenv
-RUN pipenv install psycopg2-binary
-RUN pipenv install Pillow
-RUN pipenv install crispy-bootstrap5 && pipenv install django-crispy-forms
+
 RUN pipenv install --system
-RUN pipenv install django-phonenumber-field
+
 
 # Copy project
 COPY . /code/

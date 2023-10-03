@@ -13,6 +13,7 @@ django-bootstrap5 = "*"
 pillow = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
+django-bootstrap-datepicker-plus = "*"
 
 [dev-packages]
 
