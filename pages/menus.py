@@ -39,3 +39,8 @@ Menu.add_item("menu", MenuItem('Войти',
                                reverse('account_login'),
                                check=lambda request: not request.user.is_authenticated,
                                icon='menu-app'))
+
+Menu.add_item("menu", MenuItem('Регистрация',
+                               reverse('account_signup'),
+                               check=lambda request: not  request.user.is_authenticated,
+                               icon='menu-app'))

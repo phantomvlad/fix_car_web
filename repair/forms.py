@@ -1,7 +1,6 @@
 from django.forms import ModelForm
 from .models import Repair
 from django import forms
-from bootstrap_datepicker_plus.widgets import DatePickerInput
 
 class RepairForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
