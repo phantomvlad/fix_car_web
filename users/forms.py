@@ -22,6 +22,11 @@ class CustomUserSignupForm(SignupForm):
         model = get_user_model()
         fields = ('email', 'username', 'password')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+
 class CustomUserLoginForm(LoginForm):
     def login(self, *args, **kwargs):
         return super(CustomUserLoginForm,self).login(*args, **kwargs)
