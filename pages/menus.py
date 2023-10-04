@@ -26,7 +26,7 @@ Menu.add_item("menu", MenuItem('Личный кабинет',
                                icon='menu-app'))
 
 Menu.add_item("menu", MenuItem('Мои автомобили',
-                               url=lambda request: request.user.get_absolute_url,
+                               reverse('car_list'),
                                check=lambda request: request.user.is_authenticated,
                                icon='menu-app'))
 

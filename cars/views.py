@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, ListView
 from .forms import CarForm
 from .models import Car
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 class CarPageView(DetailView):
     model = Car
@@ -35,3 +37,13 @@ class CarPageUpdate(UpdateView):
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk')
         return get_object_or_404(Car, pk=pk)
+
+@method_decorator(login_required,name='dispatch')
+class CarPageList(ListView):
+    model = Car
+    template_name = 'cars/list.html'
+    context_object_name = 'cars'
+
+    def get_queryset(self):
+        user = self.request.user
+        return Car.objects.filter(owner=user).order_by('-time_update')
