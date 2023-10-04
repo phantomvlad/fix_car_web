@@ -3,9 +3,9 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.template.defaultfilters import slugify
+from django.core.validators import RegexValidator
 
 class CustomUser(AbstractUser):
-    phone = PhoneNumberField(verbose_name="Мобильный телефон")
     slug = models.SlugField(unique=True, max_length=255, db_index=True, null=False)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)

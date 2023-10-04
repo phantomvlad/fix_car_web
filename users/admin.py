@@ -15,13 +15,13 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     prepopulated_fields = {"slug": ('username', )}
     fieldsets = None
-    fields = ("email", 'username', 'phone',)
+    fields = ("email", 'username',)
 
     inlines = [
         CarInline,
         RepairInline
     ]
-    list_display = ["email", 'username', 'phone', 'time_create', 'time_update', 'slug']
+    list_display = ["email", 'username', 'time_create', 'time_update', 'slug']
 
 
 admin.site.register(CustomUser, CustomUserAdmin)

@@ -14,3 +14,4 @@ class UserPageView(DetailView):
         context['account'] = account
         context['cars'] = cars
         return context
+
