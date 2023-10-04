@@ -1,7 +1,23 @@
 {% extends '_base.html' %}
 {% load repair_tags %}
 {%  block content %}
-    <h1>Автомобиль {{ car }}</h1>
+	{{ object.queryset }}
+
+	<h4>Информация об автомобиле:</h4>
+	<p>Марка: {{ car.brand|default:'Не заполнено' }}</p>
+	<p>Модель: {{ car.model|default:'Не заполнено' }}</p>
+	<p>Год выпуска: {{ car.generation|default:'Не заполнено' }}</p>
+	<p>Коробка передач: {{ car.transmission|default:'Не заполнено' }}</p>
+	<p>Тип двигателя: {{ car.engine|default:'Не заполнено' }}</p>
+	<p>Тип двигателя по подаче воздуха: {{ car.air|default:'Не заполнено' }}</p>
+	<p>Газовое оборудование: {{ car.gaz|default:'Не заполнено' }}</p>
+	<p>Привод: {{ car.wheel_drive|default:'Не заполнено' }}</p>
+	<p>Мощность двигателя: {{ car.capacity|default:'Не заполнено' }}</p>
+	<p>Пробег: {{ car.mileage|default:'Не заполнено' }}</p>
+	<p>Винкод: {{ car.vincode|default:'Не заполнено' }} </p>
+    <a class="btn btn-outline-warning" href="{% url 'car_update' car.pk %}">Редактировать автомобиль</a>
+
+
     <h3>Ремонты:</h3>
     {% get_repairs_car car %}
     <a class="btn btn-outline-primary" href="{% url 'repair_create' car.pk %}">+ Новый ремонт</a>

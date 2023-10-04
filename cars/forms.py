@@ -6,11 +6,11 @@ class CarForm(ModelForm):
     class Meta:
         model = Car
         exclude = ['owner']
-
         widgets = {
-            'gaz': forms.RadioSelect(choices=((True, 'Есть'), (False, 'Нет')))
+            'gaz': forms.RadioSelect(choices=((True, 'Да'), (False, 'Нет')))
         }
 
         help_texts = {
             'gaz': 'Выберите, есть ли у вас газовое оборудование'
         }
+

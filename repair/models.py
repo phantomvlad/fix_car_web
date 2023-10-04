@@ -40,5 +40,5 @@ class Repair(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.title:
-            self.title = f'{self.description_small.capitalize()}, {self.mileage} км., {self.date}'
+            self.title = f'{self.description_small.capitalize()}, {self.mileage} км., {self.date.strftime("%d.%m.%Y")}'
         return super().save(*args, **kwargs)
