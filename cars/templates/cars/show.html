@@ -1,8 +1,6 @@
 {% extends '_base.html' %}
 {% load repair_tags %}
 {%  block content %}
-	{{ object.queryset }}
-
 	<h4>Информация об автомобиле:</h4>
 	<p>Марка: {{ car.brand|default:'Не заполнено' }}</p>
 	<p>Модель: {{ car.model|default:'Не заполнено' }}</p>

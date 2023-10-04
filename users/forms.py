@@ -5,6 +5,7 @@ from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
 class CustomUserCreationForm(UserCreationForm):
+    slug = forms.CharField(max_length=150)
     class Meta(UserCreationForm):
         model = get_user_model()
         fields=('email', 'username', 'phone',)
@@ -14,6 +15,7 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = get_user_model()
         fields = ('email', 'username', 'phone',)
+
 
 class CustomUserSignupForm(SignupForm):
     phone = PhoneNumberField(region='RU')
