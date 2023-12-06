@@ -1,0 +1,35 @@
+{% load bootstrap_icons %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">FixTheCar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link  {% if request.get_full_path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">На главную</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == '/about/' %}active{% endif %}" href="{% url 'about' %}">О нас</a>
+        </li>
+
+      	{% if request.user.is_authenticated %}
+          <li class="nav-item">
+          	<a class="nav-link {% if request.get_full_path == '/cars/' %}active{% endif %}" href="{% url 'car_list' %}">Мои автомобили</a>
+          </li>
+          <li class="nav-item">
+          	<a class="nav-link" href = "/accounts/{{ request.user.slug }}">{{ request.user.slug }}</a>
+          </li>
+          <li class="nav-item" style="margin: auto;">
+            <a class="btn nav-link" href = "{% url 'account_logout' %}" role="button" style="padding: 2px 2px 2px 2px">Выйти {% bs_icon 'box-arrow-left' color='white' %}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Войти</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

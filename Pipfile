@@ -8,7 +8,6 @@ django = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 django-allauth = "*"
-django-simple-menu = "*"
 django-bootstrap5 = "*"
 pillow = "*"
 django-phonenumber-field = "*"
@@ -17,6 +16,7 @@ django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
 boto3 = "*"
 django-storages = "*"
+django-bootstrap-icons = "*"
 
 [dev-packages]
 
