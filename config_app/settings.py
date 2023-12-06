@@ -12,6 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CSRF_COOKIE_SECURE = False
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'crispy_forms',
     'crispy_bootstrap5',
+    'storages',
 
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -138,8 +140,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -152,3 +153,25 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_FORMS = {'signup': 'users.forms.CustomUserSignupForm'}
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# STORAGE AWS
+#DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
+#AWS_ACCESS_KEY_ID='b5FeyZU6xui1JTge9LLbQG'
+#AWS_SECRET_ACCESS_KEY='amDxoDaGyrmZDB8YeaoXMYPkFobKLjyAxn54ZTytKoHc'
+#AWS_STORAGE_BUCKET_NAME='fix-car'
+#AWS_S3_ENDPOINT='hb.ru-msk.vkcs.cloud'
+#AWS_DEFAULT_REGION='ru-msk'
+#AWS_S3_CUSTOM_DOMAIN=f'{AWS_STORAGE_BUCKET_NAME}.hb.ru-msk.vkcs.cloud'
+#AWS_S3_OBJECT_PARAMETERS = {
+    #'CacheControl': 'max-age=86400',
+#}
+#AWS_LOCATION='static'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+#STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+STATIC_URL = '/static/'
+#AWS_DEFAULT_ACL='private'
+
+#STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'
