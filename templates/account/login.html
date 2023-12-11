@@ -1,0 +1,55 @@
+{% extends '_base.html' %}
+{% load i18n %}
+{% load allauth account socialaccount %}
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+{% block content %}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+				{% element h1 %}
+					<h2 class="fw-bold mb-2 text-uppercase">{% trans "Sign In" %}</h2>
+				{% endelement %}
+				<p class="text-white-50 mb-5">
+           		 {% blocktrans %}Введите Email и пароль, или
+           		 <a href="{{ signup_url }}">зарегистрируйтесь</a>.{% endblocktrans %}
+				</p>
+				{% url 'account_login' as login_url %}
+
+			{% element form form=form method="post" action=login_url tags="entrance,login" %}
+            {% slot body %}
+				<div class="form-outline form-white mb-4">
+                	{% csrf_token %}
+					<div class="form-outline form-white mb-4">
+						{% element fields form=form unlabeled=True %}
+						{% endelement %}
+					</div>
+                	{% if redirect_field_value %}
+                   	 	<input type="hidden"
+							name="{{ redirect_field_name }}"
+                        	value="{{ redirect_field_value }}" />
+                	{% endif %}
+			{% endslot %}
+				{% slot actions %}
+					{% element button type="submit" tags="prominent,login" %}
+						{% trans "Sign In" %}
+					{% endelement %}
+				{% endslot %}
+			{% endelement %}
+
+			{% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	</div>
+  </div>
+
+{% endblock content %}

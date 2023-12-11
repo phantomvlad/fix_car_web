@@ -14,11 +14,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-CSRF_COOKIE_SECURE = False
-ALLOWED_HOSTS = []
+DEBUG = True #  енв
+#CSRF_COOKIE_SECURE = False
+ALLOWED_HOSTS = [] # енв
 
-SITE_ID = 1
+#SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
 
     'allauth',
     'allauth.account',
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'storages',
+    'debug_toolbar',
 
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -66,11 +66,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config_app.urls'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+if DEBUG:
+    import socket
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ['127.0.0.1', '10.0.2.2']
 
 TEMPLATES = [
     {
@@ -128,11 +136,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 
@@ -169,6 +178,9 @@ STATICFILES_DIRS = [
 ]
 #STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 STATIC_URL = '/static/'
+
+MEDIA_ROOT= (BASE_DIR / 'media')
+MEDIA_URL = '/media/'
 #AWS_DEFAULT_ACL='private'
 
 #STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'

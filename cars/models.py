@@ -23,8 +23,8 @@ WHEEL_CHOICES = [
 ]
 
 class Car(models.Model):
-    brand = models.CharField(verbose_name='Марка')
-    model = models.CharField(verbose_name='Модель')
+    brand = models.CharField(verbose_name='Марка', max_length=150)
+    model = models.CharField(verbose_name='Модель', max_length=150)
     generation = models.PositiveSmallIntegerField(verbose_name='Год выпуска')
     transmission = models.CharField(verbose_name='Тип коробки передач', null=True, blank=True, choices=TRANSMISSION_CHOICES)
     engine = models.CharField(verbose_name='Тип двигателя', null=True, blank=True, choices=ENGINE_CHOICES)
@@ -33,7 +33,7 @@ class Car(models.Model):
     wheel_drive = models.CharField(verbose_name='Привод', null=True, blank=True, choices=WHEEL_CHOICES)
     capacity = models.PositiveSmallIntegerField(verbose_name='Мощность двигателя', null=True, blank=True)
     mileage = models.PositiveIntegerField(verbose_name='Пробег', null=True, blank=True)
-    vincode = models.CharField(verbose_name='Винкод', null=True, blank=True)
+    vincode = models.CharField(verbose_name='Винкод', null=True, blank=True, max_length=150)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(get_user_model(), on_delete = models.SET_NULL, related_name='cars', null=True, blank=True, verbose_name='Владелец', db_index=True)
@@ -47,4 +47,4 @@ class Car(models.Model):
         return f"{self.brand} {self.model}"
 
     def get_absolute_url(self):
-        return reverse('car_show', kwargs={'pk': self.pk})
+        return reverse('cars:show', kwargs={'pk': self.pk})

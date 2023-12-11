@@ -19,7 +19,7 @@ KIND_CHOICES = [
 ]
 
 class Repair(models.Model):
-    title = models.CharField(verbose_name='Название ремонта')
+    title = models.CharField(verbose_name='Название ремонта', max_length=150)
     type = models.CharField(max_length=7, verbose_name='Ремонт/замена', choices=TYPE_CHOICES)
     kind = models.CharField(max_length=12, verbose_name='Тип ремонта', choices=KIND_CHOICES)
     date = models.DateField(verbose_name='Дата ремонта')
@@ -36,7 +36,7 @@ class Repair(models.Model):
         return f"{self.title}"
 
     def get_absolute_url(self):
-        return reverse('repair_show', kwargs={'pk_car': self.car.pk, 'pk_repair': self.pk})
+        return reverse('cars:repairs:show', kwargs={'pk_car': self.car.pk, 'pk_repair': self.pk})
 
     def save(self, *args, **kwargs):
         if not self.title:

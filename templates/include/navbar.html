@@ -17,7 +17,7 @@
 		<ul class="navbar-nav ml-auto">
 		  {% if request.user.is_authenticated %}
             <li class="nav-item">
-          	  <a class="nav-link {% if request.get_full_path == '/cars/' %}active{% endif %}" href="{% url 'car_list' %}">Мои автомобили</a>
+          	  <a class="nav-link {% if request.get_full_path == '/cars/' %}active{% endif %}" href="{% url 'cars:list' %}">Мои автомобили</a>
             </li>
 			<li class="nav-item">
 			  <a class="nav-link" href = "/accounts/{{ request.user.slug }}">{{ request.user.username }}</a>
@@ -28,6 +28,9 @@
 			{% else %}
 			<li class="nav-item">
 			  <a class="nav-link" href="{% url 'account_login' %}">Войти</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="{% url 'account_signup' %}">Зарегистрироваться</a>
 			</li>
       	  </ul>
 		{% endif %}

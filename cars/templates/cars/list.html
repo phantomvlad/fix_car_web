@@ -2,5 +2,5 @@
 {%  block content %}
     <h1>Ваши автомобили</h1>
     {% include 'cars/include/list_cars.html' %}
-	<a class="btn btn-outline-primary" href="{% url 'car_create' %}">+ Новый автомобиль</a>
+	<a class="btn btn-outline-primary" href="{% url 'cars:create' %}">+ Новый автомобиль</a>
 {% endblock %}

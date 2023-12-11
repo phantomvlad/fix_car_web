@@ -17,6 +17,8 @@ crispy-bootstrap5 = "*"
 boto3 = "*"
 django-storages = "*"
 django-bootstrap-icons = "*"
+gunicorn = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 
