@@ -42,3 +42,6 @@ class Repair(models.Model):
         if not self.title:
             self.title = f'{self.description_small.capitalize()}, {self.mileage} км., {self.date.strftime("%d.%m.%Y")}'
         return super().save(*args, **kwargs)
+
+    def all(self):
+        return self.get_queryset().select_related('owner', 'car')

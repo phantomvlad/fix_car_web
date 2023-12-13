@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'repair.apps.RepairConfig',
 
+
+    'services',
+
 ]
 
 MIDDLEWARE = [
@@ -156,6 +159,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_CHANGE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_SESSION_REMEMBER = True

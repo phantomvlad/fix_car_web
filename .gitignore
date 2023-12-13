@@ -1,4 +1,5 @@
 .idea
 .env
 .static
+.media
 env.prod

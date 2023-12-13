@@ -47,3 +47,4 @@ class CarPageList(ListView):
     def get_queryset(self):
         user = self.request.user
         return Car.objects.filter(owner=user).order_by('-time_update')
+

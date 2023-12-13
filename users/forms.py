@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from allauth.account.forms import LoginForm, SignupForm
 from django import forms
+from .models import CustomUser
 from phonenumber_field.formfields import PhoneNumberField
 
 class CustomUserCreationForm(UserCreationForm):
@@ -12,10 +13,9 @@ class CustomUserCreationForm(UserCreationForm):
         fields=('email', 'username',)
 
 class CustomUserChangeForm(UserChangeForm):
-    slug = forms.CharField(max_length=150)
     class Meta(UserChangeForm):
         model = get_user_model()
-        fields = ('email', 'username',)
+        fields = ('username',)
 
 class CustomUserSignupForm(SignupForm):
     class Meta(UserChangeForm):

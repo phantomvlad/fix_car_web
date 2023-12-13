@@ -13,13 +13,6 @@ class RepairPageView(DetailView):
         pk_car = self.kwargs.get('pk_car')
         return get_object_or_404(Repair, pk=pk_repair, car__pk=pk_car)
 
-    def get_context_data(self, **kwargs):
-        context=super().get_context_data(**kwargs)
-        pk_car = self.kwargs.get('pk_car')
-        car = get_object_or_404(Car, pk=pk_car)
-        context['car'] = car
-        return context
-
 class RepairPageNew(CreateView):
     form_class = RepairForm
     template_name = "repair/new.html"

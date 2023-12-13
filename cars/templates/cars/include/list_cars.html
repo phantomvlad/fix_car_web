@@ -1,3 +1,26 @@
+{% load static %}
+
 {% for car in cars %}
-	<p><a href='{{ car.get_absolute_url }}'>{{ car }}</a></p>
+    <div class="col">
+        <div class="card h-100">
+            <a style='height:300px; width=100%' href="{{car.get_absolute_url }}">
+            	<img src="{{ car.image.url }}" class="card-img-top" alt="{{ car }}" style="width: 100%; height:100%; object-fit:cover">
+            </a>
+            <div class="card-body">
+                <a href="{{ car.get_absolute_url }}">
+                    <h5 class="card-title text-center"><a class='link-dark link-underline link-underline-opacity-0' href='{{ car.get_absolute_url }}'>{{ car }} {{ car.generation }}</a></h5>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endfor %}
+ <div class="col">
+    	<a  style='height:300px; width=100%' href="{% url 'cars:create' %}">
+            <div class="card h-100">
+                <img src="{% static 'image/add_car.avif' %}" class="card-img-top" alt="{{ car }}" style="width: 100%; height:100%; object-fit:cover">
+                <div class="card-body">
+                	<a class="btn btn-outline-primary h-100 w-100" href="{% url 'cars:create' %}">+ Новый автомобиль</a>
+                </div>
+            </div>
+        </a>
+ </div>

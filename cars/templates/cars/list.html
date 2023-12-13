@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 {%  block content %}
     <h1>Ваши автомобили</h1>
-    {% include 'cars/include/list_cars.html' %}
-	<a class="btn btn-outline-primary" href="{% url 'cars:create' %}">+ Новый автомобиль</a>
+    <div class="row row-cols-1 row-cols-md-5 g-4 mb-5">
+        {% include 'cars/include/list_cars.html' %}
+    </div>
 {% endblock %}

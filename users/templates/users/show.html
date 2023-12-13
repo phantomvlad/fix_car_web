@@ -2,7 +2,10 @@
 {% block title %}Личный кабинет{% endblock title %}
 
 {% block content %}
-	<h1>Личный кабинет {{ account.username }}</h1>
-	<p>{{ user.username }}</p>
-	<p>{{ user.email }}</p>
+	<div>
+		<h1>Личный кабинет {{ user.username }}</h1>
+		<p>{{ user.username }}</p>
+		<a class="btn btn-outline-primary" href="{% url 'account_change_password' %}">Сменить пароль</a>
+		<p>{{ user.email }}</p><a class="btn btn-outline-primary" href="{% url 'account_email' %}">Сменить Email</a>
+	</div>
 {% endblock content %}
