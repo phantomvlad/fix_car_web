@@ -3,7 +3,7 @@
 {% for car in cars %}
     <div class="col">
         <div class="card h-100">
-            <a style='height:300px; width=100%' href="{{car.get_absolute_url }}">
+            <a style='height:300px; width:100%' href="{{car.get_absolute_url }}">
             	<img src="{{ car.image.url }}" class="card-img-top" alt="{{ car }}" style="width: 100%; height:100%; object-fit:cover">
             </a>
             <div class="card-body">

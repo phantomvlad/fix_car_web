@@ -1,5 +1,6 @@
 .idea
 .env
 .static
-.media
-env.prod
+*.jpeg
+*.png
+*.jpeg
